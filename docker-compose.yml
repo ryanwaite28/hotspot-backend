@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.11-management
+    hostname: app-rabbitmq
+    ports:
+      - '5672:5672'
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./docker/api-gateway.Dockerfile
+      target: development
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./env/api-gateway.env
+      - ./env/rabbitmq.env
+    command: npm run start:dev api-gateway
+    depends_on:
+      - rabbitmq
+    volumes:
+        - .:/app
+        - /app/node_modules
+
+  users-microservice:
+    build:
+      context: .
+      dockerfile: ./docker/users-microservice.Dockerfile
+      target: development
+    env_file:
+      - ./env/users-microservice.env
+      - ./env/rabbitmq.env
+    command: npm run start:dev users-microservice
+    depends_on:
+      - rabbitmq
+      - api-gateway
+    volumes:
+        - .:/app
+        - /app/node_modules
+
+  auth-microservice:
+    build:
+      context: .
+      dockerfile: ./docker/auth-microservice.Dockerfile
+      target: development
+    env_file:
+      - ./env/auth-microservice.env
+      - ./env/rabbitmq.env
+    command: npm run start:dev auth-microservice
+    depends_on:
+      - rabbitmq
+      - api-gateway
+    volumes:
+        - .:/app
+        - /app/node_modules

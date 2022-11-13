@@ -1,0 +1,27 @@
+export enum UserSexes {
+  MALE = 'MALE',
+  FEMALE = 'FEMALE',
+
+  OTHER = 'OTHER',
+}
+
+export const UserSexesList = Object.keys(UserSexes);
+
+export enum UserGenders {
+  AGENDER = 'AGENDER',
+  BIGENDER = 'BIGENDER',
+  CISGENDER = 'CISGENDER',
+  GENDERFLUID = 'GENDERFLUID',
+  GENDERQUEER = 'GENDERQUEER',
+  GENDERVARIANT = 'GENDERVARIANT',
+  NONBINARY = 'NONBINARY',
+  PASSING = 'PASSING',
+  THIRDGENDER = 'THIRDGENDER',
+  TRANSGENDER = 'TRANSGENDER',
+  TRANSGENDER_MALE = 'TRANSGENDER_MALE',
+  TRANSGENDER_FEMALE = 'TRANSGENDER_FEMALE',
+
+  OTHER = 'OTHER',
+}
+
+export const UserGendersList = Object.keys(UserGenders);
