@@ -16,7 +16,7 @@ export class UsersMicroserviceService {
 
   ping(context: RmqContext) {
     this.rmqService.ack(context);
-    this.usersMicroserviceClient.emit(UsersMicroserviceEvents.USERS_MS_PINGED, {});
+    // this.usersMicroserviceClient.emit(UsersMicroserviceEvents.USERS_MS_PINGED, {});
     const serviceMethodResults: ServiceMethodResults = {
       status: HttpStatusCode.OK,
       error: false,

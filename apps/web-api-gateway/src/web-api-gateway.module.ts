@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ApiGatewayController } from './api-gateway.controller';
-import { ApiGatewayService } from './api-gateway.service';
+import { WebApiGatewayController } from './web-api-gateway.controller';
+import { WebApiGatewayService } from './web-api-gateway.service';
 import { UsersController } from './controllers/users/users.controller';
 import { AuthController } from './controllers/auth/auth.controller';
 import { HttpModule } from '@nestjs/axios';
@@ -20,12 +20,12 @@ import { ConfigModule } from '@nestjs/config';
     ]),
   ],
   controllers: [
-    ApiGatewayController,
+    WebApiGatewayController,
     UsersController,
     AuthController,
   ],
   providers: [
-    ApiGatewayService
+    WebApiGatewayService
   ],
 })
-export class ApiGatewayModule {}
+export class WebApiGatewayModule {}

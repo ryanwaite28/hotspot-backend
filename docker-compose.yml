@@ -8,22 +8,41 @@ services:
     ports:
       - '5672:5672'
 
-  api-gateway:
+  web-api-gateway:
     build:
       context: .
-      dockerfile: ./docker/api-gateway.Dockerfile
+      dockerfile: ./docker/web-api-gateway.Dockerfile
       target: development
     ports:
       - '3000:3000'
     env_file:
-      - ./env/api-gateway.env
+      - ./env/web-api-gateway.env
       - ./env/rabbitmq.env
-    command: npm run start:dev api-gateway
+    command: npm run start:dev web-api-gateway
     depends_on:
       - rabbitmq
     volumes:
         - .:/app
         - /app/node_modules
+
+  mobile-api-gateway:
+    build:
+      context: .
+      dockerfile: ./docker/mobile-api-gateway.Dockerfile
+      target: development
+    ports:
+      - '3001:3001'
+    env_file:
+      - ./env/mobile-api-gateway.env
+      - ./env/rabbitmq.env
+    command: npm run start:dev mobile-api-gateway
+    depends_on:
+      - rabbitmq
+    volumes:
+        - .:/app
+        - /app/node_modules
+
+
 
   users-microservice:
     build:
@@ -36,7 +55,8 @@ services:
     command: npm run start:dev users-microservice
     depends_on:
       - rabbitmq
-      - api-gateway
+      - web-api-gateway
+      - mobile-api-gateway
     volumes:
         - .:/app
         - /app/node_modules
@@ -52,7 +72,25 @@ services:
     command: npm run start:dev auth-microservice
     depends_on:
       - rabbitmq
-      - api-gateway
+      - web-api-gateway
+      - mobile-api-gateway
+    volumes:
+        - .:/app
+        - /app/node_modules
+
+  notifications-microservice:
+    build:
+      context: .
+      dockerfile: ./docker/notifications-microservice.Dockerfile
+      target: development
+    env_file:
+      - ./env/notifications-microservice.env
+      - ./env/rabbitmq.env
+    command: npm run start:dev notifications-microservice
+    depends_on:
+      - rabbitmq
+      - web-api-gateway
+      - mobile-api-gateway
     volumes:
         - .:/app
         - /app/node_modules

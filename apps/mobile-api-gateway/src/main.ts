@@ -1,10 +1,9 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { ApiGatewayModule } from './api-gateway.module';
-
+import { MobileApiGatewayModule } from './mobile-api-gateway.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(ApiGatewayModule);
+  const app = await NestFactory.create(MobileApiGatewayModule);
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.PORT);
 }

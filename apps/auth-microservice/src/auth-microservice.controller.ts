@@ -31,7 +31,7 @@ export class AuthMicroserviceController {
     this.authMicroserviceService.createUser(data.user, context);
   }
 
-  @EventPattern(UsersMicroserviceEvents.USER_CREATED)
+  @EventPattern(UsersMicroserviceEvents.USER_UPDATED)
   userUpdated(@Payload() data: { user: UserEntity }, @Ctx() context: RmqContext) {
     console.log(`AuthMicroserviceController.userUpdated:`, { data, context });
     this.authMicroserviceService.updateUser(data.user, context);

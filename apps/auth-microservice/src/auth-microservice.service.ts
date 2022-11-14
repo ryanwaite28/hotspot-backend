@@ -19,7 +19,7 @@ export class AuthMicroserviceService {
 
   ping(context: RmqContext) {
     this.rmqService.ack(context);
-    this.authMicroserviceClient.emit(AuthMicroserviceEvents.AUTH_MS_PINGED, {});
+    // this.authMicroserviceClient.emit(AuthMicroserviceEvents.AUTH_MS_PINGED, {});
     const serviceMethodResults: ServiceMethodResults = {
       status: HttpStatusCode.OK,
       error: false,

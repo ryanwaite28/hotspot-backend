@@ -27,4 +27,4 @@ COPY . .
 
 COPY --from=development /app/dist ./dist
 
-CMD ["node", "dist/apps/api-gateway/main"]
+CMD ["node", "dist/apps/web-api-gateway/main"]
