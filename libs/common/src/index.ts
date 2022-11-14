@@ -1,5 +1,6 @@
 export * from './auth/auth.module';
 export * from './auth/jwt.guard';
+export * from './auth/jwt.strategy';
 
 export * from './common/common.module';
 export * from './common/common.service';

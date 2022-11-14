@@ -42,7 +42,7 @@ export class AuthMicroserviceService {
     return user;
   }
 
-  async validateUser(data: LoginUserDto, context: RmqContext): Promise<ServiceMethodResults<string>> {
+  async validateUserLogin(data: LoginUserDto, context: RmqContext): Promise<ServiceMethodResults<string>> {
     const check = await this.usersRepository.findOneByEmail(data.email_or_username) || await this.usersRepository.findOneByUsername(data.email_or_username);
     if (!check) {
       const serviceMethodResults: ServiceMethodResults = {
@@ -68,14 +68,44 @@ export class AuthMicroserviceService {
     }
 
     this.rmqService.ack(context);
-    this.authMicroserviceClient.emit(AuthMicroserviceEvents.USER_LOGIN_VALIDATED, { id: check.id });
+    // this.authMicroserviceClient.emit(AuthMicroserviceEvents.USER_LOGIN_VALIDATED, { id: check.id });
 
+    delete check.password;
     const jwt = await this.jwtService.signAsync(check);
-    const serviceMethodResults: ServiceMethodResults<string> = {
+    const serviceMethodResults: ServiceMethodResults = {
+      status: HttpStatusCode.OK,
+      error: false,
+      info: {
+        data: {
+          jwt,
+          user: check
+        }
+      }
+    };
+    return serviceMethodResults;
+  }
+
+  async createJwt(data: any, context: RmqContext) {
+    const jwt = await this.jwtService.signAsync(data);
+    this.rmqService.ack(context);
+    const serviceMethodResults: ServiceMethodResults = {
       status: HttpStatusCode.OK,
       error: false,
       info: {
         data: jwt
+      }
+    };
+    return serviceMethodResults;
+  }
+
+  async checkJwt(data: { jwt: string }, context: RmqContext) {
+    const isExpired = await this.jwtService.verifyAsync(data.jwt);
+    this.rmqService.ack(context);
+    const serviceMethodResults: ServiceMethodResults = {
+      status: HttpStatusCode.OK,
+      error: false,
+      info: {
+        data: isExpired
       }
     };
     return serviceMethodResults;

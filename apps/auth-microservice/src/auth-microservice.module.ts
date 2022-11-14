@@ -1,4 +1,4 @@
-import { AuthModule, MicroserviceNames, RmqModule } from '@common/common';
+import { AuthModule, JwtStrategy, MicroserviceNames, RmqModule } from '@common/common';
 import { Module } from '@nestjs/common';
 import { AuthMicroserviceController } from './auth-microservice.controller';
 import { AuthMicroserviceService } from './auth-microservice.service';
@@ -38,14 +38,15 @@ console.log({ db_config });
     PassportModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: '100000s' },
+      signOptions: { expiresIn: '1h' },
     }),
   ],
   controllers: [AuthMicroserviceController],
   providers: [
     AuthMicroserviceService,
     UsersRepository,
-    TypeOrmModule
+    TypeOrmModule,
+    JwtStrategy,
   ],
 })
 export class AuthMicroserviceModule {}

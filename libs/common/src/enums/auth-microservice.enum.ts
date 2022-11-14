@@ -2,6 +2,9 @@ export enum AuthMicroserviceMessages {
   AUTH_MS_PING = `AUTH_MS_PING`,
 
   VALIDATE_USER_LOGIN = `VALIDATE_USER_LOGIN`,
+  CREATE_NEW_JWT = `CREATE_NEW_JWT`,
+  CHECK_JWT = `CHECK_JWT`,
+  REFRESH_JWT = `REFRESH_JWT`,
 }
 
 export enum AuthMicroserviceEvents {
