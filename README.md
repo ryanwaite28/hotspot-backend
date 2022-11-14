@@ -17,4 +17,108 @@ written in TypeScript running on Node.JS. The list of technologies being used:
 - RabbitMQ
 - Docker
 - PostgreSQL
-- Bcrypt
+
+
+## Features/Responsibilities By Service
+
+Below is a break-down of what each microservice will handle and be responsible for:
+
+
+
+# Users Microservice
+- creating user accounts
+- querying user accounts
+- updating user accounts
+- deleting user accounts
+- password resets
+- email verifications
+- phone verifications
+
+# Auth Microservice
+- verifying user logins
+- checking jwt
+- refreshing jwt
+
+
+# Single-Sign-On
+- OAuth 2.0 API
+- register 3rd party apps for sharing user data
+- create scopes for what user data to share
+
+# Notifications Microservice
+- create user notifications
+- send email
+- send push notifications
+- send test sms
+
+
+# Messages Microservice
+- direct messaging
+- messages with media
+
+# Posts Microservice
+- create posts
+- posts with media
+- post reactions
+- sharing posts
+- saving/favoriting posts
+
+# Comments Microservice
+- create comments
+- comments with media
+- comment reactions
+- sharing comments
+- saving/favoriting comments
+
+
+# Replies Microservice
+- create replies
+- replies with media
+- reply reactions
+- sharing replies
+- saving/favoriting replies
+
+# Conversations Microservice
+- create groupchats
+- groupchat messages with media
+- groupchat message reactions
+- groupchat message reply
+
+# Notices Microservice
+- create notice (same thing as a tweet from twitter)
+- quote notice
+- share notice
+- save notice
+- reply notice
+- react to notice
+- notice media
+
+
+# Cliques Microservice
+- create cliques (same as facebook group)
+- clique posts, comments, replies
+- clique followers, members
+
+# Stories Microservice
+- creating stories (like snapchat)
+- comment on stories
+
+# Networks Microservice
+- manage followers
+- manage connections/friends
+
+# Outreach Microservice
+- sending communications via email, text, push notifications
+
+# Anayltics Microservice
+- track user activities
+- 
+
+# Advertisements Microservice
+- pay for sponsored/featured content
+  
+# Slides Microservice
+- create videos like tiktok
+- create filters/effects for videos
+- add comments to videos
+- stitch, reply, duet videos
