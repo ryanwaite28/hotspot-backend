@@ -7,8 +7,8 @@ import {
 } from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { catchError, Observable, tap } from 'rxjs';
-import { AuthMicroserviceMessages } from '../enums/auth-microservice.enum';
-import { MicroserviceNames } from '../enums/microservices.enum';
+import { AuthMicroserviceMessages } from '../enums/microservices/auth-microservice.enum';
+import { MicroserviceNames } from '../enums/microservices/_microservices.enum';
 import { AuthGuard } from '@nestjs/passport';
 
 

@@ -62,6 +62,132 @@
       "compilerOptions": {
         "tsConfigPath": "apps/mobile-api-gateway/tsconfig.app.json"
       }
+    },
+    "messages-microservice": {
+      "type": "application",
+      "root": "apps/messages-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/messages-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/messages-microservice/tsconfig.app.json"
+      }
+    },
+    "posts-microservice": {
+      "type": "application",
+      "root": "apps/posts-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/posts-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/posts-microservice/tsconfig.app.json"
+      }
+    },
+    "comments-microservice": {
+      "type": "application",
+      "root": "apps/comments-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/comments-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/comments-microservice/tsconfig.app.json"
+      }
+    },
+    "replies-microservice": {
+      "type": "application",
+      "root": "apps/replies-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/replies-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/replies-microservice/tsconfig.app.json"
+      }
+    },
+    "conversations-microservice": {
+      "type": "application",
+      "root": "apps/conversations-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/conversations-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/conversations-microservice/tsconfig.app.json"
+      }
+    },
+    "notices-microservice": {
+      "type": "application",
+      "root": "apps/notices-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/notices-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/notices-microservice/tsconfig.app.json"
+      }
+    },
+    "cliques-microservice": {
+      "type": "application",
+      "root": "apps/cliques-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/cliques-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/cliques-microservice/tsconfig.app.json"
+      }
+    },
+    "stories-microservice": {
+      "type": "application",
+      "root": "apps/stories-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/stories-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/stories-microservice/tsconfig.app.json"
+      }
+    },
+    "socialnetworks-microservice": {
+      "type": "application",
+      "root": "apps/socialnetworks-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/socialnetworks-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/socialnetworks-microservice/tsconfig.app.json"
+      }
+    },
+    "communications-microservice": {
+      "type": "application",
+      "root": "apps/communications-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/communications-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/communications-microservice/tsconfig.app.json"
+      }
+    },
+    "analytics-microservice": {
+      "type": "application",
+      "root": "apps/analytics-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/analytics-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/analytics-microservice/tsconfig.app.json"
+      }
+    },
+    "advertisements-microservice": {
+      "type": "application",
+      "root": "apps/advertisements-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/advertisements-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/advertisements-microservice/tsconfig.app.json"
+      }
+    },
+    "slides-microservice": {
+      "type": "application",
+      "root": "apps/slides-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/slides-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/slides-microservice/tsconfig.app.json"
+      }
+    },
+    "livestreams-microservice": {
+      "type": "application",
+      "root": "apps/livestreams-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/livestreams-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/livestreams-microservice/tsconfig.app.json"
+      }
     }
   }
 }

@@ -19,22 +19,20 @@ export class AuthMicroserviceController {
   @MessagePattern(AuthMicroserviceMessages.VALIDATE_USER_LOGIN)
   validateUserLogin(@Payload() data: LoginUserDto, @Ctx() context: RmqContext) {
     console.log(`AuthMicroserviceController.validateUserLogin:`, { data, context });
-    const token = this.authMicroserviceService.validateUserLogin(data, context);
-    return { token, timestamp: Date.now() };
+    const results = this.authMicroserviceService.validateUserLogin(data, context);
+    return results;
   }
 
   @MessagePattern(AuthMicroserviceMessages.CREATE_NEW_JWT)
   createJwt(@Payload() data: any, @Ctx() context: RmqContext) {
     console.log(`AuthMicroserviceController.checkJwt:`, { data, context });
-    const token = this.authMicroserviceService.createJwt(data, context);
-    return { token, timestamp: Date.now() };
+    return this.authMicroserviceService.createJwt(data, context);
   }
 
   @MessagePattern(AuthMicroserviceMessages.CHECK_JWT)
   checkJwt(@Payload() data: { jwt: string }, @Ctx() context: RmqContext) {
     console.log(`AuthMicroserviceController.checkJwt:`, { data, context });
-    const token = this.authMicroserviceService.checkJwt(data, context);
-    return { token, timestamp: Date.now() };
+    return this.authMicroserviceService.checkJwt(data, context);
   }
 
 

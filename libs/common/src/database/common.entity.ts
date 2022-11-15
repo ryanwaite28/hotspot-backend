@@ -81,4 +81,7 @@ export abstract class CommonUserEntity extends CommonEntity {
 
   @Column({ nullable: false, default: false })
   phone_verified: boolean;
+
+  @Column({ nullable: false, default: false })
+  deactivated: boolean;
 }

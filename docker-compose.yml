@@ -11,8 +11,10 @@ services:
   web-api-gateway:
     build:
       context: .
-      dockerfile: ./docker/web-api-gateway.Dockerfile
+      dockerfile: ./docker/nestjs-app.Dockerfile
       target: development
+      args:
+        NESTJS_APP: web-api-gateway
     ports:
       - '3000:3000'
     env_file:
@@ -28,8 +30,10 @@ services:
   mobile-api-gateway:
     build:
       context: .
-      dockerfile: ./docker/mobile-api-gateway.Dockerfile
+      dockerfile: ./docker/nestjs-app.Dockerfile
       target: development
+      args:
+        NESTJS_APP: mobile-api-gateway
     ports:
       - '3001:3001'
     env_file:
@@ -47,8 +51,10 @@ services:
   users-microservice:
     build:
       context: .
-      dockerfile: ./docker/users-microservice.Dockerfile
+      dockerfile: ./docker/nestjs-app.Dockerfile
       target: development
+      args:
+        NESTJS_APP: users-microservice
     env_file:
       - ./env/users-microservice.env
       - ./env/rabbitmq.env
@@ -64,8 +70,10 @@ services:
   auth-microservice:
     build:
       context: .
-      dockerfile: ./docker/auth-microservice.Dockerfile
+      dockerfile: ./docker/nestjs-app.Dockerfile
       target: development
+      args:
+        NESTJS_APP: auth-microservice
     env_file:
       - ./env/auth-microservice.env
       - ./env/rabbitmq.env
@@ -81,8 +89,10 @@ services:
   notifications-microservice:
     build:
       context: .
-      dockerfile: ./docker/notifications-microservice.Dockerfile
+      dockerfile: ./docker/nestjs-app.Dockerfile
       target: development
+      args:
+        NESTJS_APP: notifications-microservice
     env_file:
       - ./env/notifications-microservice.env
       - ./env/rabbitmq.env

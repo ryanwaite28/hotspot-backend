@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { MicroserviceNames } from '../enums/microservices.enum';
+import { MicroserviceNames } from '../enums/microservices/_microservices.enum';
 import { RmqModule } from '../rmq/rmq.module';
 import * as cookieParser from 'cookie-parser';
 import { JwtAuthGuard } from './jwt.guard';

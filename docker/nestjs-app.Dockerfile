@@ -14,6 +14,7 @@ RUN npm run build
 
 FROM node:alpine as production
 
+ARG NESTJS_APP
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
@@ -27,4 +28,4 @@ COPY . .
 
 COPY --from=development /app/dist ./dist
 
-CMD ["node", "dist/apps/web-api-gateway/main"]
+CMD ["node", "dist/apps/", NESTJS_APP, "/main"]

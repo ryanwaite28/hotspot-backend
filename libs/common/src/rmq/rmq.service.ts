@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { RmqOptions, Transport, RmqContext } from '@nestjs/microservices';
-import { MicroserviceNames } from '../enums/microservices.enum';
+import { MicroserviceNames } from '../enums/microservices/_microservices.enum';
 
 @Injectable()
 export class RmqService {
