@@ -21,7 +21,7 @@ written in TypeScript running on Node.JS. The list of technologies being used:
 
 ## Features/Responsibilities By Service
 
-Below is a break-down of what each microservice will handle and be responsible for:
+Below is a break-down of all the microservices in this social media backend and what each microservice will handle and be responsible for:
 
 
 
@@ -33,6 +33,12 @@ Below is a break-down of what each microservice will handle and be responsible f
 - password resets
 - email verifications
 - phone verifications
+
+# Users Reported Microservice
+- reported user accounts
+
+# Users Suspended Microservice
+- reported user accounts
 
 # Auth Microservice
 - verifying user logins
@@ -57,32 +63,38 @@ Below is a break-down of what each microservice will handle and be responsible f
 - messages with media
 
 # Posts Microservice
-- create posts
+- CRUD posts
 - posts with media
-- post reactions
 - sharing posts
-- saving/favoriting posts
+
+# Post Reactions Microservice
+- CRUD post reactions
+
+# Posts Collections
+- saving posts
+
+
 
 # Comments Microservice
-- create comments
+- CRUD comments
 - comments with media
-- comment reactions
-- sharing comments
-- saving/favoriting comments
+
+# Comment Reactions Microservice
+- CRUD comment reactions
+
+# Comments Collections
+- saving comments
 
 
-# Replies Microservice
-- create replies
-- replies with media
-- reply reactions
-- sharing replies
-- saving/favoriting replies
 
 # Conversations Microservice
-- create groupchats
-- groupchat messages with media
-- groupchat message reactions
-- groupchat message reply
+- CRUD groupchats
+
+# Conversation Members Microservice
+- CRUD groupchat members
+
+# Conversation Messages Microservice
+- CRUD groupchat messages
 
 # Notices Microservice
 - create notice (same thing as a tweet from twitter)
@@ -95,9 +107,13 @@ Below is a break-down of what each microservice will handle and be responsible f
 
 
 # Cliques Microservice
-- create cliques (same as facebook group)
-- clique posts, comments, replies
-- clique followers, members
+- CRuD cliques (same as facebook group)
+
+# Clique Members Microservice
+- CRuD clique members
+
+# Clique Contents Microservice
+- clique posts, comments, live
 
 # Stories Microservice
 - creating stories (like snapchat)
