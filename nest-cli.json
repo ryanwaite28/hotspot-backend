@@ -6,7 +6,9 @@
   "root": "apps/web-api-gateway",
   "compilerOptions": {
     "webpack": true,
-    "tsConfigPath": "apps/web-api-gateway/tsconfig.app.json"
+    "tsConfigPath": "apps/web-api-gateway/tsconfig.app.json",
+    "assets": ["**/*.proto"],
+    "watchAssets": true
   },
   "projects": {
     "users-microservice": {

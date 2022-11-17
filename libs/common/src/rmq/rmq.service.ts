@@ -6,7 +6,7 @@ import { MicroserviceNames } from '../enums/microservices/_microservices.enum';
 export class RmqService {
   constructor() {}
 
-  getOptions(microservice: MicroserviceNames, noAck = false): RmqOptions {
+  static getOptions(microservice: MicroserviceNames, noAck = false): RmqOptions {
     return {
       transport: Transport.RMQ,
       options: {
