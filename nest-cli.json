@@ -188,6 +188,24 @@
       "compilerOptions": {
         "tsConfigPath": "apps/livestreams-microservice/tsconfig.app.json"
       }
+    },
+    "users-reported-microservice": {
+      "type": "application",
+      "root": "apps/users-reported-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/users-reported-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users-reported-microservice/tsconfig.app.json"
+      }
+    },
+    "users-suspended-microservice": {
+      "type": "application",
+      "root": "apps/users-suspended-microservice",
+      "entryFile": "main",
+      "sourceRoot": "apps/users-suspended-microservice/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users-suspended-microservice/tsconfig.app.json"
+      }
     }
   }
 }

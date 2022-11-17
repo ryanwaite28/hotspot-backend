@@ -24,7 +24,7 @@ export abstract class CommonEntity {
   @UpdateDateColumn()
   updated: string;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ nullable: true, default: null })
   deleted: string;
 
   @VersionColumn()

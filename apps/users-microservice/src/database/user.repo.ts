@@ -21,7 +21,7 @@ export class UsersRepository {
   }
 
   async update(id: number, data: UpdateUserDto) {
-    const user = await this.repo.findOneBy({ id });
+    const user = await this.repo.findOneBy({ id, deleted: null });
     Object.assign(user, data);
     return this.repo.save(user);
   }
@@ -31,19 +31,27 @@ export class UsersRepository {
   }
 
   findOneByUsername(username: string): Promise<UserEntity | null> {
-    return this.repo.findOneBy({ username });
+    return this.repo.findOneBy({ username, deleted: null });
   }
 
   findOneById(id: number): Promise<UserEntity | null> {
-    return this.repo.findOneBy({ id });
+    return this.repo.findOneBy({ id, deleted: null });
   }
 
   findOneByEmail(email: string): Promise<UserEntity | null> {
-    return this.repo.findOneBy({ email });
+    return this.repo.findOneBy({ email, deleted: null });
   }
 
-  async remove(id: string): Promise<DeleteResult> {
-    const results = await this.repo.delete(id);
+  findOneBy(query: object): Promise<UserEntity | null> {
+    return this.repo.findOneBy(query);
+  }
+
+  findManyBy(query: object): Promise<UserEntity[]> {
+    return this.repo.find(query);
+  }
+
+  async destroy(id: string): Promise<DeleteResult> {
+    const results = await this.repo.softDelete(id);
     return results;
   }
 }
