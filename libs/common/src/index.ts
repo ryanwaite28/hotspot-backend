@@ -8,6 +8,8 @@ export * from './common/common.service';
 export * from './dto/create-user.dto';
 export * from './dto/update-user.dto';
 export * from './dto/login-user.dto';
+export * from './dto/update-password.dto';
+export * from './dto/query/users.query.dto';
 
 export * from './interfaces/service-method-results.interface';
 
@@ -25,3 +27,5 @@ export * from './rmq/rmq.service';
 
 export * from './utils/constants.utils';
 export * from './utils/validators.utils';
+
+export * from './decorators/service-method-error-handler.decorator';

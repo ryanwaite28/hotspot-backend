@@ -28,4 +28,6 @@ COPY . .
 
 COPY --from=development /app/dist ./dist
 
+EXPOSE 80
+
 CMD ["node", "dist/apps/", NESTJS_APP, "/main"]

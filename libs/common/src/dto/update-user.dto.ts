@@ -1,15 +1,15 @@
-import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { IsBoolean, IsNotEmpty, IsEmail, IsOptional, IsString, Matches } from "class-validator";
 
 export class UpdateUserDto {  
-  @IsString()
-  @IsOptional()
-  username?: string;
+  @Matches(/[a-zA-Z0-9\-\_\.]{2,50}/)
+  @IsNotEmpty()
+  username: string;
 
   @IsString()
   @IsOptional()
   displayname?: string;
 
-  @IsString()
+  @IsEmail()
   @IsOptional()
   email?: string;
 

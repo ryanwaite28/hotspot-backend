@@ -1,15 +1,18 @@
-import { IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, Matches } from "class-validator";
+import { UserGenders, UserSexes } from "../enums/person-identities.enum";
 
 export class CreateUserDto {
-  @IsString()
+  @IsEnum(UserSexes)
   @IsOptional()
+  @IsNotEmpty()
   sex?: string;
-
-  @IsString()
+  
+  @IsEnum(UserGenders)
   @IsOptional()
+  @IsNotEmpty()
   gender?: string;
 
-  @IsString()
+  @Matches(/[a-zA-Z0-9\-\_\.]{2,50}/)
   @IsNotEmpty()
   username: string;
 
@@ -17,11 +20,12 @@ export class CreateUserDto {
   @IsNotEmpty()
   displayname: string;
 
-  @IsString()
+  @IsEmail()
   @IsNotEmpty()
   email: string;
 
   @IsString()
+  @Matches(/[^\s]{7,}/)
   @IsNotEmpty()
   password: string;
 }

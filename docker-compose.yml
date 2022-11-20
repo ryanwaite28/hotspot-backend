@@ -16,7 +16,7 @@ services:
       args:
         NESTJS_APP: web-api-gateway
     ports:
-      - '3000:3000'
+      - '3000:80'
     env_file:
       - ./env/web-api-gateway.env
       - ./env/rabbitmq.env
@@ -35,7 +35,7 @@ services:
       args:
         NESTJS_APP: mobile-api-gateway
     ports:
-      - '3001:3001'
+      - '3001:80'
     env_file:
       - ./env/mobile-api-gateway.env
       - ./env/rabbitmq.env
