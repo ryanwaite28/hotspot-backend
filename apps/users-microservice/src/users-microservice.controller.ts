@@ -18,27 +18,35 @@ export class UsersMicroserviceController {
   
 
   @MessagePattern(UsersMicroserviceMessages.CREATE_USER)
-  createUser(@Payload() data: CreateUserDto, @Ctx() context: RmqContext): ServiceMethodAsyncResults {
+  async createUser(@Payload() data: CreateUserDto, @Ctx() context: RmqContext): ServiceMethodAsyncResults {
     console.log(`UsersMicroserviceController.createUser:`, { data, context });
-    const new_user = this.usersMicroserviceService.createUser(data, context);
+    const new_user = await this.usersMicroserviceService.createUser(data, context);
+    console.log(`new user created`, new_user);
     return new_user;
   }
 
   @MessagePattern(UsersMicroserviceMessages.UPDATE_USER)
-  updateUser(@Payload() payload: { id: number, data: UpdateUserDto }, @Ctx() context: RmqContext) {
+  async updateUser(@Payload() payload: { id: number, data: UpdateUserDto }, @Ctx() context: RmqContext) {
     console.log(`UsersMicroserviceController.updateUser:`, { payload, context });
-    const user = this.usersMicroserviceService.updateUser(payload.id, payload.data, context);
+    const user = await this.usersMicroserviceService.updateUser(payload.id, payload.data, context);
     return user;
   }
 
   @MessagePattern(UsersMicroserviceMessages.DELETE_USER)
-  deleteUser(@Payload() payload: { id: number }, @Ctx() context: RmqContext) {
+  async deleteUser(@Payload() payload: { id: number }, @Ctx() context: RmqContext) {
     console.log(`UsersMicroserviceController.deleteUser:`, { payload, context });
-    const user = this.usersMicroserviceService.deleteUser(payload.id, context);
+    const user = await this.usersMicroserviceService.deleteUser(payload.id, context);
     return user;
   }
 
 
+
+  @MessagePattern(UsersMicroserviceMessages.GET_ALL_USERS)
+  getAllUsers(@Ctx() context: RmqContext) {
+    console.log(`UsersMicroserviceController.getAllUsers:`, { context });
+    const user = this.usersMicroserviceService.getAllUsers(context);
+    return user;
+  }
 
   @MessagePattern(UsersMicroserviceMessages.GET_USER_BY_ID)
   getUserById(@Payload() payload: { id: number }, @Ctx() context: RmqContext) {
@@ -86,33 +94,33 @@ export class UsersMicroserviceController {
 
 
 
-  @MessagePattern(UsersMicroserviceMessages.SEND_EMAIL_VERIFICATION_CODE)
-  sendEmailVerificationCode(@Payload() payload: { email: string }, @Ctx() context: RmqContext) {
-    console.log(`UsersMicroserviceController.sendEmailVerificationCode:`, { payload, context });
-    const user = this.usersMicroserviceService.sendEmailVerificationCode(payload.email, context);
-    return user;
-  }
+  // @MessagePattern(UsersMicroserviceMessages.SEND_EMAIL_VERIFICATION_CODE)
+  // sendEmailVerificationCode(@Payload() payload: { email: string }, @Ctx() context: RmqContext) {
+  //   console.log(`UsersMicroserviceController.sendEmailVerificationCode:`, { payload, context });
+  //   const user = this.usersMicroserviceService.sendEmailVerificationCode(payload.email, context);
+  //   return user;
+  // }
 
-  @MessagePattern(UsersMicroserviceMessages.SEND_PHONE_VERIFICATION_CODE)
-  sendPhoneVerificationCode(@Payload() payload: { phone: string }, @Ctx() context: RmqContext) {
-    console.log(`UsersMicroserviceController.sendPhoneVerificationCode:`, { payload, context });
-    const user = this.usersMicroserviceService.sendPhoneVerificationCode(payload.phone, context);
-    return user;
-  }
+  // @MessagePattern(UsersMicroserviceMessages.SEND_PHONE_VERIFICATION_CODE)
+  // sendPhoneVerificationCode(@Payload() payload: { phone: string }, @Ctx() context: RmqContext) {
+  //   console.log(`UsersMicroserviceController.sendPhoneVerificationCode:`, { payload, context });
+  //   const user = this.usersMicroserviceService.sendPhoneVerificationCode(payload.phone, context);
+  //   return user;
+  // }
 
 
 
-  @MessagePattern(UsersMicroserviceMessages.EMAIL_VERIFICATION)
-  emailVerification(@Payload() payload: { code: string }, @Ctx() context: RmqContext) {
-    console.log(`UsersMicroserviceController.emailVerification:`, { payload, context });
-    const user = this.usersMicroserviceService.emailVerification(payload.code, context);
-    return user;
-  }
+  // @MessagePattern(UsersMicroserviceMessages.EMAIL_VERIFICATION)
+  // emailVerification(@Payload() payload: { code: string }, @Ctx() context: RmqContext) {
+  //   console.log(`UsersMicroserviceController.emailVerification:`, { payload, context });
+  //   const user = this.usersMicroserviceService.emailVerification(payload.code, context);
+  //   return user;
+  // }
 
-  @MessagePattern(UsersMicroserviceMessages.PHONE_VERIFICATION)
-  phoneVerification(@Payload() payload: { code: string }, @Ctx() context: RmqContext) {
-    console.log(`UsersMicroserviceController.phoneVerification:`, { payload, context });
-    const user = this.usersMicroserviceService.phoneVerification(payload.code, context);
-    return user;
-  }
+  // @MessagePattern(UsersMicroserviceMessages.PHONE_VERIFICATION)
+  // phoneVerification(@Payload() payload: { code: string }, @Ctx() context: RmqContext) {
+  //   console.log(`UsersMicroserviceController.phoneVerification:`, { payload, context });
+  //   const user = this.usersMicroserviceService.phoneVerification(payload.code, context);
+  //   return user;
+  // }
 }

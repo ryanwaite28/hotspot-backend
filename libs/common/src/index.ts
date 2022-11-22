@@ -15,7 +15,7 @@ export * from './interfaces/service-method-results.interface';
 
 export * from './database/common.entity';
 
-export * from './enums/htto-status-codes.enum';
+export * from './enums/http-status-codes.enum';
 export * from './enums/microservices/_microservices.enum';
 export * from './enums/microservices/auth-microservice.enum';
 export * from './enums/microservices/notifications-microservice.enum';
@@ -25,7 +25,12 @@ export * from './enums/person-identities.enum';
 export * from './rmq/rmq.module';
 export * from './rmq/rmq.service';
 
+export * from './broadcast/broadcast.module';
+export * from './broadcast/broadcast.service';
+
 export * from './utils/constants.utils';
 export * from './utils/validators.utils';
+
+export * from './utils/ses.aws.utils';
 
 export * from './decorators/service-method-error-handler.decorator';

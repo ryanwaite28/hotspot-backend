@@ -18,7 +18,7 @@ const db_config = {
   entities: [
     UserEntity,
   ],
-  synchronize: false,
+  synchronize: true,
 };
 console.log({ db_config });
 

@@ -1,4 +1,4 @@
-import { HttpStatusCode } from '../enums/htto-status-codes.enum';
+import { HttpStatusCode } from '../enums/http-status-codes.enum';
 
 export interface ServiceMethodResultsInfo<T = any> {
   message?: string;

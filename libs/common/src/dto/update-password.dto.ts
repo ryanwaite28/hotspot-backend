@@ -1,7 +1,11 @@
-import { IsNotEmpty, IsString, Matches } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, Matches } from "class-validator";
 
 
 export class UserPasswordUpdateDto {
+  @IsNumber()
+  @IsNotEmpty()
+  id: number;
+
   @IsString()
   @Matches(/[^\s]{7,}/)
   @IsNotEmpty()
@@ -10,6 +14,5 @@ export class UserPasswordUpdateDto {
   @IsString()
   @Matches(/[^\s]{7,}/)
   @IsNotEmpty()
-  password: string;
   newPassword: string;
 }

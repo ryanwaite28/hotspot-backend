@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { UserEntity } from './database/user.entity';
 import { UsersRepository } from './database/user.repo';
 import { JwtService } from '@nestjs/jwt';
-import { AuthMicroserviceEvents, HttpStatusCode, LoginUserDto, MicroserviceNames, RmqService, ServiceMethodResults } from '@common/common';
+import { AuthMicroserviceEvents, HttpStatusCode, LoginUserDto, MicroserviceNames, RmqService, ServiceMethodAsyncResults, ServiceMethodResults } from '@common/common';
 import * as bcrypt from 'bcrypt-nodejs';
 import { ClientProxy, RmqContext } from '@nestjs/microservices';
 
@@ -42,7 +42,7 @@ export class AuthMicroserviceService {
     return user;
   }
 
-  async validateUserLogin(data: LoginUserDto, context: RmqContext): Promise<ServiceMethodResults<string>> {
+  async validateUserLogin(data: LoginUserDto, context: RmqContext): ServiceMethodAsyncResults<string> {
     const check = await this.usersRepository.findOneByEmail(data.email_or_username) || await this.usersRepository.findOneByUsername(data.email_or_username);
     if (!check) {
       const serviceMethodResults: ServiceMethodResults = {
@@ -69,23 +69,26 @@ export class AuthMicroserviceService {
 
     this.rmqService.ack(context);
     // this.authMicroserviceClient.emit(AuthMicroserviceEvents.USER_LOGIN_VALIDATED, { id: check.id });
+    
+    const user = { ...check };
+    delete user.password;
+    console.log(`auth - check user:`, user);
 
-    delete check.password;
-    const jwt = await this.jwtService.signAsync(check);
+    const token = await this.jwtService.signAsync(user);
     const serviceMethodResults: ServiceMethodResults = {
       status: HttpStatusCode.OK,
       error: false,
       info: {
         data: {
-          jwt,
-          user: check
+          token,
+          user: user
         }
       }
     };
     return serviceMethodResults;
   }
 
-  async createJwt(data: any, context: RmqContext) {
+  async createJwt(data: any, context: RmqContext): ServiceMethodAsyncResults {
     const jwt = await this.jwtService.signAsync(data);
     this.rmqService.ack(context);
     const serviceMethodResults: ServiceMethodResults = {
@@ -98,7 +101,7 @@ export class AuthMicroserviceService {
     return serviceMethodResults;
   }
 
-  async checkJwt(data: { jwt: string }, context: RmqContext) {
+  async checkJwt(data: { jwt: string }, context: RmqContext): ServiceMethodAsyncResults {
     const isExpired = await this.jwtService.verifyAsync(data.jwt);
     this.rmqService.ack(context);
     const serviceMethodResults: ServiceMethodResults = {

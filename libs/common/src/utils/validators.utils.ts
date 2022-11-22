@@ -1,4 +1,4 @@
-import { HttpStatusCode } from "../enums/htto-status-codes.enum";
+import { HttpStatusCode } from "../enums/http-status-codes.enum";
 import { UserGendersList, UserSexesList } from "../enums/person-identities.enum";
 import { IDataValidator } from "../interfaces/data-validators.interface";
 import { IStoreImage } from "../interfaces/request-constructs.interface";

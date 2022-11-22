@@ -60,7 +60,6 @@ services:
       - ./env/rabbitmq.env
     command: npm run start:dev users-microservice
     depends_on:
-      - rabbitmq
       - web-api-gateway
       - mobile-api-gateway
     volumes:
@@ -79,7 +78,6 @@ services:
       - ./env/rabbitmq.env
     command: npm run start:dev auth-microservice
     depends_on:
-      - rabbitmq
       - web-api-gateway
       - mobile-api-gateway
     volumes:
@@ -98,7 +96,6 @@ services:
       - ./env/rabbitmq.env
     command: npm run start:dev notifications-microservice
     depends_on:
-      - rabbitmq
       - web-api-gateway
       - mobile-api-gateway
     volumes:

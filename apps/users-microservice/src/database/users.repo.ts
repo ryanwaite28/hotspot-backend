@@ -1,7 +1,7 @@
-import { CreateUserDto, UpdateUserDto } from "@common/common";
+import { CreateUserDto, QueryUsersDto, UpdateUserDto } from "@common/common";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { DeleteResult, Repository } from "typeorm";
+import { DeleteResult, FindManyOptions, Repository } from "typeorm";
 import { UserEntity } from "./user.entity";
 
 
@@ -16,11 +16,22 @@ export class UsersRepository {
   }
 
   async create(data: CreateUserDto) {
+    data.username = data.username.toLowerCase();
+    data.email = data.email.toLowerCase();
     const new_user = this.repo.create(data);
     return this.repo.save(new_user);
   }
 
   async update(id: number, data: UpdateUserDto) {
+    const user = await this.repo.findOne({
+      where: { id },
+      withDeleted: false
+    });
+    Object.assign(user, data);
+    return this.repo.save(user);
+  }
+
+  async updateUser(id: number, data: object) {
     const user = await this.repo.findOne({
       where: { id },
       withDeleted: false
@@ -40,7 +51,13 @@ export class UsersRepository {
 
 
   findAll(): Promise<UserEntity[]> {
-    return this.repo.find();
+    const find_options: FindManyOptions = {
+      
+    };
+    return this.repo.find(find_options).then((users) => {
+      users.forEach((user) => { delete user.password; });
+      return users;
+    });
   }
 
   findOneById(id: number): Promise<UserEntity | null> {
@@ -71,9 +88,9 @@ export class UsersRepository {
     }) || null;
   }
 
-  findOneBy(where: object): Promise<UserEntity | null> {
+  findOneByQuery(query: QueryUsersDto): Promise<UserEntity | null> {
     return this.repo.findOne({
-      where,
+      ...query,
       withDeleted: false
     }) || null;
   }

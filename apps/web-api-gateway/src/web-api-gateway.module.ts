@@ -4,7 +4,7 @@ import { WebApiGatewayService } from './web-api-gateway.service';
 import { UsersController } from './controllers/users/users.controller';
 import { AuthController } from './controllers/auth/auth.controller';
 import { HttpModule } from '@nestjs/axios';
-import { CommonLibraryModule, MicroserviceNamesList, RmqModule } from '@common/common';
+import { CommonLibraryModule, available_microservices_list, RmqModule } from '@common/common';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -14,7 +14,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule,
 
     // register clients for all microservices by name
-    RmqModule.registerClients(MicroserviceNamesList),
+    RmqModule.registerClients(available_microservices_list),
   ],
   controllers: [
     WebApiGatewayController,

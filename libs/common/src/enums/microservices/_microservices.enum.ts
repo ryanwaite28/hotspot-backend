@@ -19,3 +19,11 @@ export enum MicroserviceNames {
 }
 
 export const MicroserviceNamesList = Object.keys(MicroserviceNames) as MicroserviceNames[];
+
+
+export const available_microservices_list = [
+  MicroserviceNames.USERS,
+  MicroserviceNames.AUTH,
+  MicroserviceNames.NOTIFICATIONS,
+];
+export const available_microservices_set = new Set(available_microservices_list);

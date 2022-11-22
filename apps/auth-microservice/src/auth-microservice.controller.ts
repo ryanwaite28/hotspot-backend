@@ -25,7 +25,7 @@ export class AuthMicroserviceController {
 
   @MessagePattern(AuthMicroserviceMessages.CREATE_NEW_JWT)
   createJwt(@Payload() data: any, @Ctx() context: RmqContext) {
-    console.log(`AuthMicroserviceController.checkJwt:`, { data, context });
+    console.log(`AuthMicroserviceController.createJwt:`, { data, context });
     return this.authMicroserviceService.createJwt(data, context);
   }
 
