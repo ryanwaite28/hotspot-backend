@@ -5,6 +5,7 @@ const aws_ses_client = new SESClient({ region: "us-east-1" });
 
 export function sendAwsEmail(params: {
   to: string,
+  subject: string,
   message: string,
 }) {
   return aws_ses_client.send(new SendEmailCommand({
@@ -14,7 +15,7 @@ export function sendAwsEmail(params: {
     },
     Message: {
       Subject: {
-        Data: `New User Account! Finish Signup`
+        Data: params.subject,
       },
       Body: {
         Html: {

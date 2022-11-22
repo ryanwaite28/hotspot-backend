@@ -26,8 +26,8 @@ Below is a break-down of all the microservices in this social media backend and 
 
 
 # Users Microservice
-- creating user accounts
-- querying user accounts
+- creating user accounts (done)
+- querying user accounts (done)
 - updating user accounts
 - deleting user accounts
 - password resets
@@ -41,8 +41,9 @@ Below is a break-down of all the microservices in this social media backend and 
 - reported user accounts
 
 # Auth Microservice
-- verifying user logins
-- checking jwt
+- verifying user logins (done)
+- creating jwt
+- decoding jwt
 - refreshing jwt
 
 
